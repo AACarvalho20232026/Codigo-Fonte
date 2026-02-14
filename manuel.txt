@@ -1,0 +1,85 @@
+================================================================
+          MANUAL DE UTILIZADOR - FECHADURA INTELIGENTE IOT
+================================================================
+PROJETO: Fechadura Eletrónica com Controlo Biométrico e RFID
+VERSÃO:  1.0
+AUTOR:   Alexandre Carvalho
+================================================================
+
+1. INTRODUÇÃO
+Este sistema permite o controlo de acessos através de três métodos 
+distintos: Cartão de Proximidade (RFID), Impressão Digital e 
+Aplicação Móvel. Este guia descreve os procedimentos de abertura, 
+fecho e interpretação das mensagens do ecrã.
+
+----------------------------------------------------------------
+2. PROCEDIMENTOS DE ABERTURA (ENTRADA)
+----------------------------------------------------------------
+
+MÉTODO A: VIA CARTÃO RFID
+1. Aproxime o seu cartão ou porta-chaves (Tag) do leitor azul.
+2. Mantenha uma distância inferior a 5 cm.
+   -> SUCESSO: O ecrã exibe "BEM-VINDO!" e a porta destranca.
+   -> ERRO: Se o ecrã mostrar "Cartao Invalido", o seu cartão 
+      não tem autorização de acesso.
+
+MÉTODO B: VIA BIOMETRIA (IMPRESSÃO DIGITAL)
+1. Coloque o dedo registado no sensor ótico (luz verde/vermelha).
+2. Aplique uma leve pressão para garantir uma boa leitura.
+   -> SUCESSO: O sistema valida a digital e abre a porta.
+   -> ERRO: Se o sistema não reagir, limpe o dedo e tente 
+      novamente. Se a digital não for reconhecida, a porta 
+      manter-se-á trancada.
+
+MÉTODO C: VIA APLICAÇÃO MÓVEL (REMOTO)
+1. Abra a aplicação "Arduino IoT Cloud Remote" no smartphone.
+2. Aceda ao Dashboard da fechadura.
+3. Toque no botão virtual (Switch) para a posição "ON".
+   -> AÇÃO: A porta destranca imediatamente e o ecrã físico 
+      atualiza a mensagem de boas-vindas.
+
+----------------------------------------------------------------
+3. SAÍDA E FECHO AUTOMÁTICO
+----------------------------------------------------------------
+
+PARA SAIR (INTERIOR -> EXTERIOR):
+Pressione o Botão de Saída físico instalado no interior da sala. 
+A porta destrancará imediatamente ("Saida Manual").
+
+TRANCAMENTO AUTOMÁTICO:
+Não é necessário trancar a porta manualmente. O sistema possui 
+um temporizador de segurança que volta a acionar o trinco 
+automaticamente 5 segundos após a abertura.
+
+----------------------------------------------------------------
+4. GUIA DE MENSAGENS DO ECRÃ (LCD)
+----------------------------------------------------------------
+O painel LCD informa o estado atual da fechadura. Consulte a 
+lista abaixo para interpretar as mensagens:
+
+[ MENSAGEM NO ECRÃ ]         [ SIGNIFICADO ]
+"Cartao / Digital"        -> MODO DE ESPERA (STANDBY)
+" >> Aproxime << "           O sistema está pronto a ser usado.
+
+"Acesso Permitido"        -> ACESSO AUTORIZADO
+"BEM-VINDO!"                 A porta está aberta. Entre.
+
+"Cartao Invalido"         -> ACESSO NEGADO
+(Código do Cartão)           O cartão utilizado não está registado
+                             no sistema. Acesso proibido.
+
+"WiFi a ligar..."         -> INICIALIZAÇÃO
+                             O sistema está a tentar ligar-se à
+                             internet. Aguarde alguns segundos.
+
+"Fora de Servico"         -> FALHA DE SEGURANÇA (FAIL-SAFE)
+"Erro Tecnico"               O sensor biométrico não foi detetado.
+                             Por segurança, o sistema bloqueou.
+                             Contacte o suporte técnico.
+
+================================================================
+NOTA DE SUPORTE:
+Em caso de falha de energia ou avaria do sistema, a fechadura 
+permanecerá na sua posição segura (Trancada). Utilize o botão 
+interior ou a chave mecânica de emergência (se aplicável).
+================================================================
